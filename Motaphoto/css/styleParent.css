@@ -35,6 +35,32 @@ height:80px;
     font-weight:600;
   }
 
+  /*============================ burger menu ================================= */
+  .burger-menu-icons {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+    justify-content: end;
+  }
+  .burger-menu-open,
+  .burger-menu-close {
+    height: 30px;
+    width: 30px;
+    /* display: none; */
+  }
+  .burger-menu-open.active {
+    display: block;
+  }
+  .burger-menu-close.active {
+    display: block;
+  }
+  header {
+    z-index: 9999;
+    position: relative;
+  }
+
   .PhotoDisplay{
    width:100%;
    height:50%;
@@ -59,7 +85,11 @@ height:80px;
     color:red;
   }
 
-  /***********FOOTER-MENU*******************/
+  /*************Modal************************/
+  .w3-modal-content {
+    width: 682px;
+    }
+   /***********FOOTER-MENU*******************/
   .my-footer-menu{
    display:flex;
    flex-direction:row;
@@ -76,4 +106,73 @@ height:80px;
     .my-footer-menu{
       flex-direction: column;
     }
+  }
+
+
+  /*****************Main Container *******************/
+  .letters-transform{
+    text-transform: uppercase;
+  }
+  .mainContainer{
+    width:100%;
+    max-width:1200px;
+    height:auto;
+    min-height: 600px;
+    margin: 0 auto;
+
+  }
+  .SelectContainer{
+    margin:50px auto;
+
+  }
+  .w3-select{
+   max-width:80% !important;
+  }
+
+  .PhotoDisplay{
+   width:93.5%;
+   margin-left: 0px;
+   max-width:1200px;
+   
+  }
+  .PhotoDisplay >div >img{
+    width:100%;
+    object-fit: cover;
+    height: fit-content;
+    max-width:546px;
+    height:295px;
+  }
+
+
+  /******************Single Page ********************/
+  .title-type{
+   position:relative; 
+   padding-top:30%;
+  }
+  .title-type >p{
+    font-family: space Mono;
+    font-weight: 400;
+    font-size: 14px;
+    line-height:28px;
+  }
+  .pic-title{
+    font-family:space Mono;
+    font-weight: 400;
+    font-size: 66px;
+    line-height: 58px;
+    width:30%;
+  }
+  #contact-filled{
+  color:#fff !important;
+  width:50%;
+  }
+  .image_single_container{
+   width:100%;
+   height:auto;
+   max-height:563px;
+   text-align:center;
+  }
+  .image_single_container>img{
+    height:500px;
+    object-fit: cover;
   }

@@ -1,7 +1,7 @@
 <?php wp_footer(); ?>
 
 <!-- Rajout de menu via panel d'administration -->
-<footer class="w3-container w3-border-top w3-light-white">
+<footer class="w3-container w3-border-top w3-light-white w3-padding">
     <?php
     if (has_nav_menu('footer-menu')) : ?>
         <?php

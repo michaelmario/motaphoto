@@ -40,6 +40,9 @@
                 ?>
             <?php endif;
             ?>
+        <div class="burger-menu-icons">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-burger-icon.svg" alt="Burger menu icon" class="burger-menu-open active">
+        </div>
 </div>
 </div>
 </div>

@@ -38,7 +38,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-}
+	font-family:Poppins;
+	}
 ol, ul {
 	list-style: none;
 }
@@ -120,9 +121,8 @@ table {
 	padding:20px;
   }
   .wpcf7 {
-	padding-left: 30px;
-	padding-right: 30px;
-  }
+	padding-left:112px;
+	 }
   #close {
 	position: absolute;
 	top: 0px;
