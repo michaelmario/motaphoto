@@ -10,7 +10,6 @@
     
     ?>
 <div class="w3-container w3-margin-top ">
-
     <!-- section du haut -->
     <section class="w3-row">
         <div class="w3-half">
@@ -26,8 +25,7 @@
             <div class="w3-half">
                 <div class="image_single_container">
                 <img src="<?php echo get_field('image'); ?>" alt="image de marriage" class="w3-image">
-            </div>
-        </div>       
+            </div>               
     </section>
 
     <!-- section middle -->
@@ -45,16 +43,16 @@
         $next_item = get_next_post();
         $previous_item = get_previous_post();
                 
-        $next_image = get_the_post_thumbnail($next_item->ID);
-        $previous_image = get_the_post_thumbnail($previous_item->ID);
+        /*$next_image = get_the_post_thumbnail($next_item->ID);
+        $previous_image = get_the_post_thumbnail($previous_item->ID);*/
                 
         $permalink_next = get_the_permalink($next_item->ID);
-        $permalink_prev = get_the_permalink($previous_item->ID);
+       // $permalink_prev = get_the_permalink($previous_item->ID);
         ?>
         <div class="w3-col m4">
         <div class="photo-navigation">
             <div class="image">
-             <img src="<?php   $next_image; ?>" alt="">
+             <img src="<?php echo $next_image; ?>" alt="">
             </div>
 
             <div class="arrows">
@@ -69,6 +67,7 @@
 
                 <?php
                 } 
+           
                 ?>
                 <!-- right / next -->
                 <?php if(!empty($next_item)){
@@ -81,12 +80,13 @@
 
                 <?php
                 } 
+            
                 ?>
              </div>
             </div>
         </div>
     </section>
-
+    <?php endwhile ?>
     <!-- section bas -->
     <section class="suggested-photo-container">
         <h3 class="text-in-upper-case">Vous aimerez AUSSI</h3>
@@ -97,7 +97,7 @@
             $category = get_field('categorie');
             $current_post_id = get_the_ID();
             // var_dump($current_post);
-           // var_dump($category);
+           
             $args = array(
                 'post_type' => 'photos',
                 'meta_key' => 'categorie',
@@ -109,18 +109,15 @@
             
             // lancement de query
             $suggestionPhoto = new WP_Query($args);
-           
+            
             //- Loop --
              if ($suggestionPhoto->have_post()) : 
                
              while ($suggestionPhoto->have_posts()) : $suggestionPhoto->the_post(); ?>
              <div class="pic-suggested">
-                <img src="<?php
-                                    $img = get_field('image');
-                                    echo $img['url'];
-                                    ?>" alt="">
+                <img src="<?php echo  get_field('image');?>" alt="">
             </div>
-            <?php endwhile; ?>
+            <?php var_dump($suggestionPhoto); endwhile; ?>
             <?php endif; ?>
             <?php wp_reset_postdata(); 
 ?>
@@ -134,12 +131,9 @@
 
     <!-- section ZONE DES TESTS  -->
 
-    <?php
-    // $archivePage = get_post_type_archive_link( 'photo' );
-    // var_dump($archivePage);
-    ?>
+    
 </div>
 <!-- section ZONE DES TESTS  -->
 
-<?php endwhile ?>
+
 <?php get_footer(); ?>

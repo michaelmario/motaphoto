@@ -4,8 +4,8 @@ height:80px;
 
 }
 .hero-header {
-    width: 100%;
-    height: 50%;
+    width: 100svw;
+    height: 50vh;
     padding-top: 66%;
     position: relative;
     background-image: url('http://motaphoto.local/wp-content/uploads/2023/08/nathalie-11-scaled.jpeg');
@@ -34,8 +34,97 @@ height:80px;
     font-size: larger;
     font-weight:600;
   }
+  .burger-menu-icons {
+    display:none;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  .photo-grid img {
+    display: block;
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+  }
+  .img-box {
+    width: 100%;
+    
+  }
 
+  /* ========================== Lightbox effect: front-page.php ======================= */
+.image-container .img {
+  position: relative;
+}
+.image-container .overlay {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.92) 100%);
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 999;
+  width: 100%;
+}
+.photo-grid img {
+  object-fit: cover;
+}
+.image-container .img:hover .overlay {
+  visibility: visible;
+}
+.eye img {
+  object-fit: fill;
+  height: 50px;
+}
+.fullscreen{
+  cursor: pointer;
+}
+.open-fullscreen {
+  display: flex;
+  justify-content: end;
+}
+.open-fullscreen img {
+  object-fit: fill;
+  height: 50px;
+  width: 50px;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+.links p {
+  color: rgba(255, 255, 255, 1);
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+}
+/********************Js Display *************/
+.overlay{
+  position:relative;
+  top:108px;
+  right:10px;
+  display:none;
+}
+.eye{
+  position:relative;
+  top:40%;
+  left:40%;
+  width:80px;
+  height:50px;
+ /* display:none;*/
+}
   /*============================ burger menu ================================= */
+  @media(max-width:768px){
   .burger-menu-icons {
     display: flex;
     width: 100%;
@@ -43,19 +132,25 @@ height:80px;
     align-items: center;
     cursor: pointer;
     justify-content: end;
+    
+    
   }
   .burger-menu-open,
   .burger-menu-close {
     height: 30px;
     width: 30px;
-    /* display: none; */
+    display: none;
   }
   .burger-menu-open.active {
     display: block;
+    position: absolute;
+    top:72px;
+    left:88%;
   }
   .burger-menu-close.active {
     display: block;
   }
+}
   header {
     z-index: 9999;
     position: relative;
@@ -84,6 +179,10 @@ height:80px;
   .my-main-menu > li:hover{
     color:red;
   }
+  .my-footer-menu > li:hover{
+    color:red;
+  }
+
 
   /*************Modal************************/
   .w3-modal-content {
@@ -147,7 +246,7 @@ height:80px;
   /******************Single Page ********************/
   .title-type{
    position:relative; 
-   padding-top:30%;
+   padding-top:20%;
   }
   .title-type >p{
     font-family: space Mono;
@@ -176,3 +275,225 @@ height:80px;
     height:500px;
     object-fit: cover;
   }
+
+  .lightbox {
+    display: none;
+    /* visibility : hidden; */
+    position: fixed;
+    width: 100wh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.lightbox.active{
+    display: block;
+}
+.lightbox > #close-lightbox{
+    position: absolute;
+    width:50px;
+    height:50px;
+    right: 65px;
+    top: 55px;
+    cursor: pointer;
+    color:#fff;
+    background-color: green;
+    z-index: 200;
+}
+.lightbox-image-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+}
+.image-lightbox{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width:300px) and (max-width: 768px) {
+  * {
+   /* box-shadow: 0 0 0 3px red inset;*/
+  }
+  html {
+    /* width: 100%;
+        height: 100%; */
+    max-width: 768px;
+  }
+  .nav-links-container {
+    /* visibility: hidden; */
+    display: none;
+  }
+  .header {
+    width: 100%;
+  }
+  #menu-main-menu{
+    display:none;
+  }
+  .menu-footer-menu-container{
+   display:none;
+  }
+  .menu-mobile_menu-container{
+    position:absolute;
+    top:70px;
+    line-height: 5;
+    
+  }
+  /*============================ burger menu ================================= */
+  .burger-menu-icons {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    cursor: pointer;
+    justify-content: end;
+  }
+  .burger-menu-open,
+  .burger-menu-close {
+    height: 30px;
+    width: 30px;
+    /* display: none; */
+  }
+  .burger-menu-open.active {
+    display: block;
+  }
+  .burger-menu-close.active {
+    display: block;
+  }
+  header {
+    z-index: 9999;
+    position: relative;
+  }
+  /*==================================== menu opened ===============================*/
+  .burger-menu-opened {
+    display: block;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color:red;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 200;
+  }
+  .burger-menu-opened.active {
+    visibility: visible;
+  }
+  .header-logo-close {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+  }
+  .burger-menu-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .burger-menu-links a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Space Mono", sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    color: white;
+  }
+  /*========================================== Main section ====================== */
+  /*  grid */
+  .photo-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  /* ========================================== Footer =================================== */
+  .my-footer-menu {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  /* ================================ Single page ==================== */
+  /* **************** section du haut ********************** */
+  .main-content {
+    width: 100%;
+    height: 100vh;
+  }
+  .content-body {
+    flex-direction: column-reverse;
+    gap: 10%;
+  }
+  .title-type {
+    width: 100%;
+    height: 300px;
+    padding-top: 0px;
+  }
+  .title-type p {
+    margin: 5px 0 15px 0;
+  }
+  .pic-title {
+    font-size:38px;
+    width: 100%;
+    line-height: 48px;
+  }
+  .photo-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  }
+  /* *************** middle section ************* */
+  .contact-carrousel {
+    /* width: 100vw; */
+    height: 15vh;
+    /* margin-left: 10px; */
+    margin-right: 0;
+    border-bottom: 2px solid black;
+  }
+  .photo-navigation {
+    display: none;
+  }
+  .contact-btn {
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 20px;
+  }
+  #contact-filled {
+    margin-left: 0px;
+    margin-right: 150px;
+    padding: 8px 33px;
+    border: none;
+    border-left: 4px solid black;
+    background-color: transparent;
+  }
+  /* ********************* lower section **************** */
+  .suggested-photo-container {
+    width: 100%;
+  }
+  .pic-suggested {
+    width: 100%;
+    margin: 0;
+  }
+  .photo-suggestions {
+    flex-direction: column;
+    width: 100%;
+  }
+  /* !ici c'est la fin de media query ! All the code must be written above */
+}
+@media(min-width: 769px) {
+  .burger-menu-icons,
+  .burger-menu-opened {
+    display: none;
+  }
+}

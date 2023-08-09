@@ -17,7 +17,10 @@ add_action('wp_enqueue_scripts', 'style_motaphoto');
 //====================== Ajouter le JS  =========================================== //
 function my_scripts()
 {
-    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/script.js', array('jquery'), false, true);
+    wp_enqueue_script('JQUERY','https://code.jquery.com/jquery-3.4.1.min.js',false ,true);
+    wp_enqueue_script('scriptJson', get_stylesheet_directory_uri() . '/js/getData.js', array('JQUERY'), false, true);
+    wp_enqueue_script('script', get_stylesheet_directory_uri() . '/js/script.js', array('JQUERY'), false, true);
+    
 }
 add_action('wp_enqueue_scripts', 'my_scripts');
 
@@ -28,6 +31,7 @@ function register_my_menus()
         array(
             'main-menu' => __('Main Menu'),
             'footer-menu' => __('Menu Footer'),
+            'mobile-menu' => __('Mobile-Menu'),
         )
     );
 }
@@ -40,18 +44,18 @@ function load_more()
     $posts_per_page = 4;
 
     $args = [
-        'post_type' => 'photo',
+        'post_type' => 'photos',
         'posts_per_page' => $posts_per_page,
         'orderby' => 'date',
         'order' => 'ASC',
         'paged' => $paged,
     ];
 
-    if (!empty($_POST['category'])) {
+    if (!empty($_POST['categorie'])) {
         $args['tax_query'][] = [
             'taxonomy' => 'categorie',
             'field' => 'slug',
-            'terms' => $_POST['category'],
+            'terms' => $_POST['categorie'],
         ];
     }
 
@@ -84,21 +88,21 @@ function load_more()
                 ?>
                 <div class="img">
                     <a href="<?php echo $permalink; ?>">
-                        <img src="<?php echo $pic['url']; ?>" alt="image de mariage">
+                        <img src="<?php echo $pic; ?>" alt="image de mariage">
                     </a>
                 
 
                 <div class="overlay">
                     <div class="open-fullscreen" rel="">
-                        <img rel="<?php echo $pic['url']; ?>" class="fullscreen" src="<?php echo get_template_directory_uri(); ?>/assets/images/fullscreen.svg" alt="Fullscreen">
+                        <img rel="<?php echo get_field('image'); ?>" class="fullscreen" src="<?php echo get_template_directory_uri(); ?>/assets/images/images/fullscreen.svg" alt="Fullscreen">
                     </div>
                     
                     <div class="eye">
-                    <a href="<?php echo get_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/picture-eye.svg" alt="Eye"></a>
+                    <a href="<?php echo get_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/picture-eye.svg" alt="Eye"></a>
                     </div>
                     <div class="links">
                         <p><?php echo the_title(); ?></p>
-                        <p><?php echo get_field('category'); ?></p>
+                        <p><?php echo get_field('categorie'); ?></p>
                     </div>
                 </div>
             </div>
