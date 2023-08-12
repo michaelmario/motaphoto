@@ -93,4 +93,32 @@ function openBurgerMenu() {
     });
   }
   openBurgerMenu();
-
+  /*let currentSlide;
+   var index = 1;
+   const slideShowInterval = 2000;
+   var slideArray = ;*/
+   let slideIndex = 0;
+   showSlides();
+   
+   function showSlides() {
+     let slides = document.querySelectorAll('.mySlides');
+     
+     for (let i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+     }
+     
+     slideIndex++;
+     
+     if (slideIndex > slides.length) {
+       slideIndex = 1;
+     }
+     
+     slides[slideIndex - 1].style.display = "block";
+     setTimeout(showSlides, 2000); // Change image every 2 seconds
+   }
+   
+   
+   
+   
+    
+   

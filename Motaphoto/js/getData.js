@@ -2,6 +2,7 @@ $(window).on("load", function () {
   setInterval(() => {        
     openLightbox();
   }, "1000");
+    
   let currentPage = 1;
   let gridHtml = document.querySelector(".photo-grid");
    function sendRequest() {
@@ -101,6 +102,7 @@ $(window).on("load", function () {
   sendRequest();
 
   return;
+
 });
 
 

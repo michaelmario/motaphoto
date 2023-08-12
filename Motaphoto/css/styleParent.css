@@ -5,15 +5,13 @@ height:80px;
 }
 .hero-header {
     width: 100vw;
-    height: 50vh;
-    padding-top: 66%;
+    height: 90vh;
     position: relative;
-    background-image: url('http://motaphoto.local/wp-content/uploads/2023/08/nathalie-11-scaled.jpeg');
     object-fit: cover;
   }
-.hero-title {
+.mySlides >.hero-title {
     position: absolute;
-    top: 50%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
@@ -24,7 +22,7 @@ height:80px;
     font-weight: 700;
     font-style: italic;
     text-transform: uppercase;
-    /* prevent line breaks */
+    /* prevent line breaks*/ 
     white-space: nowrap;
     -webkit-text-stroke: 2px #fff;
     color: transparent;
@@ -58,6 +56,19 @@ height:80px;
   .img-box {
     width: 100%;
     height:51vh;
+    
+   }
+   .box-img > img{
+    position:relative;
+    z-index:-50;
+   }
+   .img-box>img:hover{
+    background: rgba(0, 0, 0, 0.8) ;  
+    width: 100%;
+    height:51vh;   
+     z-index:200;
+    position:relative;
+     
    }
   .nodisplay{
     display:none;
@@ -67,10 +78,7 @@ height:80px;
   
 /********************Js Display *************/
 /*.overlay{
-  position:relative;
-  top:130px;
-  right:10px;
-  height:fit-content;
+ 
  /* display:none;
 }*/
 .eye{

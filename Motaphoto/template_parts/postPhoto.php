@@ -6,14 +6,15 @@
     'posts_per_page' => 4, // je determine la limite d'affichage ici. Pour afficher tout : -1
     'paged' => 1,
 );
+ 
 ?>
 <div class="W3-container">
-    <!-- La partie photo en bg + title de hero header -->
+    <!-- La partie photo en bg + title de hero header >-->
     <div class="hero-header">
-        <h1 class="hero-title">PHOTOGRAPH EVENT</h1>
+              <?php get_template_part( 'template_parts/carousel'); ?>
     </div>
-    <div class="mainContainer">
-        <section class="SelectContainer">
+    <div class="mainContainer ">
+          <section class="SelectContainer w3-margin-top">
             <div class="w3-row">
                 <div class="w3-third w3-section">
                     <form id="filter-cat" class="js-filter-form w3-center">
