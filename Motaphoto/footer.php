@@ -11,11 +11,7 @@
         )); ?>
     <?php endif;
     ?>
-    <!-- mention texte “Tous droits réservés” -->
-    <!-- <div class="rights-reserved">
-        <p class="my-footer-menu">Tous Droits Réservés</p>
-    </div> -->
-</footer>
+    </footer>
 
 
 <?php wp_footer(); ?>

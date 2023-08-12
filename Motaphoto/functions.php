@@ -9,8 +9,8 @@ function style_motaphoto(){
     wp_enqueue_style('fonts','https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     wp_enqueue_style('style', get_stylesheet_directory_uri() .'/style.css');
     wp_enqueue_style('w3Style',"https://www.w3schools.com/w3css/4/w3.css");
-    wp_enqueue_style('styleParent',get_stylesheet_directory_uri() .'./css/styleParent.css');
-    
+    wp_enqueue_style('child-style',get_stylesheet_directory_uri() .'./css/newStyle.css');
+    wp_enqueue_style('parent-style',get_stylesheet_directory_uri() .'./css/styleParent.css');
 }
 add_action('wp_enqueue_scripts', 'style_motaphoto');
 
@@ -38,7 +38,7 @@ function register_my_menus()
 add_action('init', 'register_my_menus');
 
 //========================  Load more button ================================================= //
-function load_more()
+/*function load_more()
 {
     $paged = $_POST['paged'];
     $posts_per_page = 4;
@@ -121,7 +121,7 @@ function load_more()
 }
 
 add_action('wp_ajax_load_more', 'load_more');
-add_action('wp_ajax_nopriv_load_more', 'load_more');
+add_action('wp_ajax_nopriv_load_more', 'load_more');*/
 
 
 

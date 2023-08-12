@@ -48,10 +48,10 @@
             </div>
         </section>
         <div class="display-photo">
-           <div class="photo-grid">
-                  
+           <div class="photo-grid">                  
             </div>
-        <button class="w3-btn w3-gray w3-margin-top" id="load-more">Load More</button>
-                    
+            <div class="w3-container buttonContainer">
+              <button class="w3-btn w3-gray" id="load-more">Charger plus</button>
+            </div>    
      </div>
       
