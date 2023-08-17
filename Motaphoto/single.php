@@ -132,23 +132,11 @@
             <a id="load-all-photos" class="w3-button w3-gray" href="<?php echo get_site_url(); ?>">Toutes les photos</a>
         </div>
 
-    </section>
-
-    <!-- section ZONE DES TESTS  -->
-    
-    <?php
-    // $archivePage = get_post_type_archive_link( 'photo' );
-    // var_dump($archivePage);
-    ?>
+    </section>    
     </div>
-    <!-- section ZONE DES TESTS  -->
     
-
-<!-- section ZONE DES TESTS  -->
-
-
 </div>
-<!-- section ZONE DES TESTS  -->
+
 
 <?php endwhile ?>
 <?php get_footer(); ?>

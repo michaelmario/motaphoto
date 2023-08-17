@@ -58,6 +58,7 @@ function openLightbox(){
               lightboxImage = document.querySelector('.image-lightbox');
               lightboxImage.src = overlayImg;            
               lightboxSpace.classList.add('active');
+                           
             })
     });
     const closeLightbox = document.getElementById('close-lightbox');
@@ -101,6 +102,7 @@ function openBurgerMenu() {
    showSlides();
    
    function showSlides() {
+    if(window.location == "http://motaphoto.local/"){
      let slides = document.querySelectorAll('.mySlides');
      
      for (let i = 0; i < slides.length; i++) {
@@ -115,7 +117,8 @@ function openBurgerMenu() {
      
      slides[slideIndex - 1].style.display = "block";
      setTimeout(showSlides, 2000); // Change image every 2 seconds
-   }
+   
+    } }
    
    
    

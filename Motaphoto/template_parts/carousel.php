@@ -14,11 +14,10 @@ $allPhotos = new WP_Query($args);
                     continue; // Skip this post
                 }
                
-                $permalink = get_the_permalink();
-                $pic = get_field('image'); 
+                  $pic = get_field('image'); 
                ?>
 
-            <div class="w3-container  mySlides">
+            <div class="container  mySlides">
               <img src="<?php echo $pic; ?>" class="imgSlide">
               <h1 class="hero-title"><?php the_title() ?></h1>          
            </div>

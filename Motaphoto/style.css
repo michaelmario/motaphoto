@@ -30,7 +30,11 @@ html{
     max-width:1440px;
     max-height:100vh;
     margin:0 auto;
+	-webkit-text-size-adjust: 100%;
+	font-family: "Space Mono", sans-serif;
+	width: 100%;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -70,8 +74,7 @@ table {
 	justify-content: center;
 	align-items: center;
 	z-index: 999;
-	/* à enlever */
-	top: 0;
+	top:80px;
 	left: 0;
   }
   .popup.active {
