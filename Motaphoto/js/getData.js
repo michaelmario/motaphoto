@@ -85,10 +85,6 @@ $(window).on("load", function () {
     
   });
 
-/*if (document.getElementById('load-more')) {
-    initFilters();
-    
-  }  */
 }
   var imgBox;
   var relImag;

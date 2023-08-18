@@ -46,11 +46,23 @@
         <div class="w3-col m4">
             <div class="photo-navigation">
                 <div class="image">
-                   <?php
+                   <?php                 
                    if($next_item){
                      $next_image = get_the_post_thumbnail($previous_item->ID);
                      echo $next_image; 
-                   }               
+                   } 
+                    try{
+                    if($previous_item){
+                    $previous_image = get_the_post_thumbnail($next_item);
+                     echo $previous_image; 
+                   }else if(!$previous_item){
+                    echo 'image not found';
+                   }
+                   }catch (Exception $e) {
+                    // Handle file not found exception
+                    echo "File not found: " . $e->getMessage();
+
+                   }             
                      ?>
                 </div>
 
@@ -65,7 +77,7 @@
                             alt="fleche gauche"></a>
 
                     <?php
-                } 
+                }
            
                 ?>
                     <!-- right / next -->

@@ -1,15 +1,4 @@
-/* *.header { 
-    width: 100%;
-    height: 80px;
-    z-index: 9999;
-    position: relative;
-    height: 80px;
-    display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
 
-}
 /*========================= Navigation menu ===================*/
 
 .hero-header {
@@ -21,7 +10,7 @@
 
 .mySlides>.hero-title {
     position: absolute;
-    top: 50%;
+    top: 64%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
@@ -263,6 +252,9 @@ a {
 
 /************************Single Page********************/
 /******************Single Page ********************/
+.page-container{
+  margin:0px 15px;
+}
 .title-type{
     position:relative; 
     padding-top:21.9%;
@@ -288,11 +280,11 @@ a {
    .image_single_container{
     width:100%;
     height:auto;
-    max-height:563px;
+    max-height:100vh;
     text-align:center;
    }
    .image_single_container>img{
-     max-height: 50vh;
+     max-height:70vh;
      height:auto;
      object-fit: cover;
    }
@@ -315,17 +307,23 @@ a {
      height: 80px;
      width: 100%;
      margin-top: 10px;
+     display: flex;
+    justify-content: flex-end;
    }
    .image img {
      max-height: 80px;
      width: auto;
      margin-top: 10px;
+     margin-right: 20px;
    }
-   .arrows {
-     margin-top: 5px;
-     display: flex;
-     gap: 15%;
-   }
+   .arrows{
+   margin-top: 5px;
+    display: flex;
+    gap:25%;
+    width: 100%;
+    justify-content: flex-end;
+    margin-right: 40px;
+}
    .arrows img {
      max-height: 20px;
    }
@@ -348,7 +346,9 @@ a {
    height: 60vh;
    object-fit: cover;
  }
-
+.active{
+ display:block;
+}
 
 
 
@@ -364,7 +364,7 @@ a {
     justify-content:center;
      text-align: center;
      height:100px;
-     padding-top:124px;
+     padding-top:14px;
     }
    .my-footer-menu >li{
      padding-top:10px;
