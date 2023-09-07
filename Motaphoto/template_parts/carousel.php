@@ -17,7 +17,7 @@ $allPhotos = new WP_Query($args);
                   $pic = get_field('image'); 
                ?>
 
-            <div class="container  mySlides">
+            <div class="mySlides">
               <img src="<?php echo $pic; ?>" class="imgSlide">
               <h1 class="hero-title"><?php the_title() ?></h1>          
            </div>

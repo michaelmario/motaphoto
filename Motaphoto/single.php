@@ -25,7 +25,16 @@
         <div class="w3-half">
             <div class="image_single_container">
             <img src="<?php echo get_field('image'); ?>" alt="<?php echo get_the_title() ?>" class="w3-image">
+            <div class="overlay">
+                    <div class="open-fullscreen" rel="<?php echo get_field('image'); ?>">
+                        <img rel="<?php echo get_field('image'); ?>" class="fullscreen" src="http://motaphoto.local/wp-content/uploads/2023/08/fullscreen.png" alt="Fullscreen">
+                    </div>                    
+                    <div class="links">
+                        <p><?php echo the_title(); ?></p>
+                        <p class="categorie"><?php echo get_field('categorie'); ?></p>
                     </div>
+                </div>
+        </div>
     </section>
 
     <!-- section middle -->
@@ -48,21 +57,21 @@
                 <div class="image">
                    <?php                 
                    if($next_item){
-                     $next_image = get_the_post_thumbnail($previous_item->ID);
+                     $next_image = get_the_post_thumbnail($next_item);
                      echo $next_image; 
                    } 
-                    try{
-                    if($previous_item){
-                    $previous_image = get_the_post_thumbnail($next_item);
-                     echo $previous_image; 
-                   }else if(!$previous_item){
-                    echo 'image not found';
-                   }
-                   }catch (Exception $e) {
-                    // Handle file not found exception
-                    echo "File not found: " . $e->getMessage();
+                //     try{
+                //     if($previous_item){
+                //     $previous_image = get_the_post_thumbnail($previous_item);
+                //      echo $previous_image; 
+                //    }else if(!$previous_item){
+                //     echo '';
+                //    }
+                //    }catch (Exception $e) {
+                //     // Handle file not found exception
+                //     echo "File not found: " . $e->getMessage();
 
-                   }             
+                //    }             
                      ?>
                 </div>
 

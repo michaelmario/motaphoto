@@ -1,0 +1,231 @@
+
+
+/****************************************lightbox***********************/
+.lightbox {
+    display: none;
+    /* visibility : hidden; */
+    position: fixed;
+    width: 100wh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.lightbox.active{
+    display: block;
+}
+#close-lightbox{
+    position: absolute;
+    right: 65px;
+    top: 55px;
+    color: aliceblue;
+    cursor: pointer;
+    background-color: green;
+    z-index: 199;
+}
+.lightbox-image-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+}
+.image-lightbox{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+/*******************************************************************
+********************POPUP*************************************/
+.lightbox {
+    display: none;
+    position: fixed;
+    width: 100wh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.lightbox.active{
+    display: block;
+}
+#close-lightbox{
+    position: absolute;
+    right: 65px;
+    top: 55px;
+    cursor: pointer;
+}
+.lightbox-image-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+}
+.image-lightbox{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+ .burger-menu-icons .active{
+  display:block;
+ }
+ .burger-menu-open{
+  display:none;
+ }
+ .burger-menu-icons{
+  display:none;
+ }
+ .header-logo-close{
+  display:none;
+ }
+ .header-logo-close .active{
+  display:block;
+ }
+ .burger-menu-links{
+  display:none;
+ }
+
+  /*============================ burger menu ================================= */
+  @media(max-width:768px){
+    /*.logo{
+      display:none;
+    }*/
+    .hero-header {      
+      height: 25vh !important;     
+  }
+
+    .photo-grid {
+      grid-template-columns: repeat(1, 1fr) !important;        
+    }
+    .photo-grid .img {
+      margin:0 15px;
+  }
+    .imgSlide{
+        width:100%;
+        height:30vh !important;
+        object-fit:cover;
+        overflow: hidden;
+      }
+      .mySlides>.hero-title {
+        font-size: 8.5vw !important;
+        font-weight:400 !important;
+      }
+      #sectionSelect{
+        margin-top:-100px;
+      }
+      #mainMenu{
+        display:block !important;
+      }
+      .my-main-menu{
+        display:none !important;
+      }
+    .burger-menu-icons {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      cursor: pointer;
+      justify-content: end;
+      
+      
+    }
+    .burger-menu-open,
+    .burger-menu-close {
+      height: 30px;
+      width: 30px;
+      /*display: none;*/
+    }
+    
+    .burger-menu-open.active {
+      display: block;
+      position: absolute;   
+      top:66px;
+      left:88%;
+    }
+    .burger-menu-close.active {
+      display:block;
+    }
+    .burger-menu-icons{
+      display:block !important;
+     }
+     
+    
+    #menu-mobile_menu{
+      text-align:center;
+      position:absolute;
+      background-color: red;
+      color:#fff;
+      height:100vh;
+      width:100%;
+      z-index:1000;
+      display:none;
+    }
+    #menu-mobile_menu >li{
+      position:relative;
+      top:28%;
+      line-height:66px;
+      font-size:2rem;
+      font-family:monospace;
+     
+    }
+   
+    .header-logo-close{
+      height:67px;
+      padding:20px;
+    }
+    .burger-menu-close{
+      float:right;
+      line-height: 3;
+      display:none;
+    }
+    
+    /********************footer media *************/
+   .my-footer-menu{
+      flex-direction: column !important;
+      padding-top:36px !important;
+    }
+    .my-footer-menu >li{
+      margin-right:0px !important;
+    }
+  } 
+
+ /* @media(max-width:1024px){
+	.photo-grid .img > .overlay {
+		height:fit-content;
+		min-height: 293px;
+	}
+  }*/
+
+  @media(width:1280px){
+    .hero-header {      
+      height: 47vh !important;     
+  }
+  .mySlides>.hero-title {
+    position:inherit;
+     top:70% !important ;
+    
+  }
+         #sectionSelect {
+        margin-top:400px !important;
+    }
+    .display-photo{
+      margin-top:50px !important;
+    }
+    }
+   
+   
+    

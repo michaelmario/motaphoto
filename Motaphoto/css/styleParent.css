@@ -1,23 +1,35 @@
 
-/*========================= Navigation menu ===================*/
+
+/********************************carousel*****************************/
+.containerMySlides{
+  max-width:1440px;
+  margin:0px;
+}
+.imgSlide{
+  width:100%;
+  height:650px;
+  max-width:1440px;
+  object-fit:cover;
+  overflow: hidden;
+}
 
 .hero-header {
-    width: 100vw;
+    width:100vw;
     height: 70vh;
     position: relative;
     object-fit: cover;
+    margin:0 auto;
 }
-
-.mySlides>.hero-title {
+.mySlides>.hero-title{
     position: absolute;
     top: 64%;
-    left: 50%;
+    left:50%;
     transform: translate(-50%, -50%);
     margin: 0;
     padding: 0;
     text-align: center;
     font-family: "Space Mono", sans-serif;
-    font-size: 6.5vw;
+    font-size: 6.5rem;
     font-weight: 700;
     font-style: italic;
     text-transform: uppercase;
@@ -26,7 +38,7 @@
     -webkit-text-stroke: 2px #fff;
     color: transparent;
 }
-
+/*========================= Navigation menu ===================*/
 a {
     text-decoration: none;
     font-size: larger;
@@ -61,6 +73,25 @@ a {
   /*************Modal************************/
   .w3-modal-content {
     width: 682px;
+    padding:0px;
+    margin-top:70px;
+    }
+    .formContainer{
+      position:relative;
+      left:21%;
+      padding-bottom:20px;
+    }
+
+    .wpcf7-form> p:nth-child(4){
+    position:relative;
+    left:4%;  
+    padding-top:20px;
+    }
+    #ctnBtn{
+     text-align: center;
+     background-color:#ccc;
+     width:300px;
+
     }
 
 /*****************Main Container *******************/
@@ -73,6 +104,9 @@ a {
     margin:150px auto;
 
   }
+  #sort-dates{
+    width:56%;
+  }
   .filters_text {
 	font-size: 14px;
 	text-transform: capitalize;
@@ -83,9 +117,14 @@ a {
 	text-transform: uppercase;
   }
   
-  .background_option{
-   background-color: red !important;
+  select.decorated option:hover {
+    box-shadow: 0 0 10px 100px red inset;
+}
+
+  option{
+    padding:10px;
   }
+  
   .SelectContainer{
     margin-top:50px;
     }
@@ -168,8 +207,9 @@ a {
 	display: flex;
 	justify-content: space-between;
 	position:relative;
-	top: -100px;
-    padding: 20px
+	top:-15px;
+  padding: 20px;
+  z-index: 200;
   }
   .links p {
 	color: rgba(255, 255, 255, 1);
@@ -212,7 +252,6 @@ a {
     width: 80px;
     height: 50px;
     z-index: 110;
-    top: -204px;
     left: 42%;
 
 }
@@ -257,7 +296,7 @@ a {
 }
 .title-type{
     position:relative; 
-    padding-top:21.9%;
+    padding-top:25.9%;
     border-bottom: 2px solid black;
    }
    .title-type >p{
@@ -280,14 +319,60 @@ a {
    .image_single_container{
     width:100%;
     height:auto;
-    max-height:100vh;
+    max-height:70vh;
     text-align:center;
    }
    .image_single_container>img{
      max-height:70vh;
      height:auto;
      object-fit: cover;
+    
    }
+   .image_single_container>.overlay{
+    visibility: hidden;
+    position: relative;
+    top:-400px;
+    left:7%;
+    right:0%;
+     bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.92) 100%);
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 999;
+    width: 86%;
+    height:52vh;
+    cursor: pointer;
+   }
+   .image_single_container:hover .overlay{
+    visibility: visible;
+    }
+    .image_single_container >.overlay:hover .open-fullscreen >.fullscreen{
+      visibility: visible;
+      }
+      .photoInfo{
+        display:flex;
+        position:absolute;
+        justify-content:space-around;
+        color:#fff;
+        top:96%;
+        left:0%;
+        gap:40%;
+        width:90%;
+      }
+     .reference{
+      text-transform: uppercase;
+     
+     }
+     .lightBoxCategorie{
+      text-transform: uppercase;
+     
+     }
+      
+    
    .section_middle-border{
     border-bottom:1px solid #000;
    }
@@ -319,7 +404,7 @@ a {
    .arrows{
    margin-top: 5px;
     display: flex;
-    gap:25%;
+    gap:9%;
     width: 100%;
     justify-content: flex-end;
     margin-right: 40px;

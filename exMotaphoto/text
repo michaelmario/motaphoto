@@ -1,0 +1,164 @@
+function filter_data()
+{
+$paged = $_POST['paged'];
+    $posts_per_page = 8;
+
+    $args = [
+        'post_type' => 'photos',
+        'posts_per_page' => $posts_per_page,
+        'orderby' => 'date',
+        'order' => 'ASC',
+        'paged' => $paged,
+    ];
+
+    if (!empty($_GET['categorie'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $_POST['categorie'],
+        ];
+    }
+
+    if (!empty($_POST['format'])) {
+        $args['tax_query'][] = [
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $_POST['format'],
+        ];
+    }
+
+    if (!empty($_POST['sort'])) {
+        $args['order'] = $_POST['sort'];
+    }
+
+    $allPhotos = new WP_Query($args);
+   
+    if ($allPhotos->have_posts()) {
+        $displayedPosts = array(); // Initializing empty array
+        while ($allPhotos->have_posts()) {
+                $allPhotos->the_post();
+                // Checking if post has already been displayed
+                if (in_array(get_the_ID(), $displayedPosts)) {
+                    continue; // Skip this post
+                }
+
+                $permalink = get_the_permalink();
+                $pic = get_field('image');
+              
+
+                ?>
+                <div class="img">
+                    <a href="<?php echo $permalink; ?>">
+                        <img src="<?php echo $pic; ?>" alt="image de mariage">
+                    </a>
+                
+
+                <div class="overlay">
+                    <div class="open-fullscreen" rel="">
+                        <img rel="<?php echo get_field('image'); ?>" class="fullscreen" src="<?php echo get_template_directory_uri(); ?>/assets/images/images/fullscreen.svg" alt="Fullscreen">
+                    </div>
+                    
+                    <div class="eye">
+                    <a href="<?php echo get_permalink(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/images/picture-eye.svg" alt="Eye"></a>
+                    </div>
+                    <div class="links">
+                        <p><?php echo the_title(); ?></p>
+                        <p><?php echo get_field('categorie'); ?></p>
+                    </div>
+                </div>
+            </div>
+            
+            <?php
+                $displayedPosts[] = get_the_ID(); // Add post ID to array
+                              
+        } } else {
+        echo '';
+    }
+
+    wp_reset_postdata();
+    die();
+}
+
+?>
+<!-- <section class="display-photo">
+            <div class="photo-grid">
+            </div>
+            <div class="w3-container buttonContainer">
+                <button class="w3-btn w3-gray" id="load-more">Charger plus</button>
+            </div>
+        </section> -->
+
+
+
+        function recreateHTML(elements) {
+    elements.forEach((element) => {
+        recreateImg(element);
+        recreteaHTMLoutPut(element);
+        recreteaHTMLeye(element);
+        recreatLink(element);      
+    });
+
+    function recreateImg(element) {
+      linkimg = document.createElement("a");
+      linkimg.href = element.link;
+      imgBox = document.createElement("div");
+      imgBox.className = "img";
+      var imgView = document.createElement("img");
+      imgView.className = "w3-images";
+      imgView.src = element.acf.image;
+      relImag = element.acf.image;
+      if (window.location == "http://motaphoto.local/") {
+        imgBox.append(linkimg);
+        linkimg.append(imgView);
+
+        photoGrid.append(imgBox);
+
+      } else {
+        console.log("Page single");
+      }
+    }
+    function recreteaHTMLoutPut(ele) {
+      let firstdiv = document.createElement("div");
+      firstdiv.className = "overlay";
+      let openFullScreen = document.createElement("div");
+      openFullScreen.className = "open-fullscreen";
+      openFullScreen.setAttribute('rel', relImag);
+      let imgFull = document.createElement("img");
+      imgFull.className = "fullscreen";
+      imgFull.src =
+        "http://motaphoto.local/wp-content/uploads/2023/08/fullscreen.png";
+      imgFull.alt = "Fullscreen";
+
+      firstdiv.append(openFullScreen);
+      openFullScreen.append(imgFull);
+      imgBox.append(firstdiv);
+    }
+    function recreteaHTMLeye(ele) {
+      let diveEye = document.createElement("div");
+      diveEye.className = "eye";
+      let linkData = document.createElement("a");
+      linkData.href = ele.link;
+      let divlinks = document.createElement("div");
+      divlinks.className = "links";
+      let imgEye = document.createElement("img");
+      imgEye.src =
+        "http://motaphoto.local/wp-content/uploads/2023/08/picture-eye.png";
+      imgEye.alt = "Eye";
+
+      diveEye.append(linkData);
+      linkData.append(imgEye);
+      imgBox.append(diveEye);
+    }
+    function recreatLink(ele) {
+      let links = document.createElement('div');
+      links.className = "links";
+      let p_first = document.createElement('p');
+      let p_last = document.createElement('p');
+      p_first.innerHTML = ele.title.rendered;
+      p_last.innerHTML = ele.acf.categorie;
+      links.append(p_first);
+      links.append(p_last);
+      imgBox.append(links);
+      
+    }
+  }

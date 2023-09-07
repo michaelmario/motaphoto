@@ -1,0 +1,39 @@
+loadMoreBtn.on("click", () => {
+  function loadPhotos() {
+    $.ajax({
+      url: postUrl + postPage + orderBY + order,
+      method: "GET",
+      dataType: "json",
+      success: function (data) {
+        if ((currentPage = currentPage + 1)) {
+          data.forEach((post) => {
+            photoGrid.html(
+               `<div class="img aos-init aos-animate" data-aos="fade-right" data-offset="300" data-easing="ease-in-sine"><img src=` +
+                post.acf.image +
+                ` alt=` +
+                post.title.rendered +
+                `><div class="overlay"><div class="open-fullscreen" rel=` +
+                post.acf.image +
+                `><img rel=` +
+                post.acf.image +
+                ` class="w3-btn fullscreen" src="http://motaphoto.local/wp-content/uploads/2023/08/fullscreen.png" alt="Fullscreen"></div><div class="eye"><a href=` +
+                post.acf.image +
+                `><img src="http://motaphoto.local/wp-content/themes/motaphoto/assets/images/images/picture-eye.svg" alt="Eye"></a></div><div class="links"><p class="ref-val">` +
+                post.acf.reference +
+                `</p>   <p class="titleName">` +
+                post.title.rendered +
+                `</p><p class="categorie">` +
+                post.acf.categorie +
+                `</p></div></div></div>`
+            );
+          });
+        }
+      },
+      error: function (e) {
+        //called when there is an error
+        console.log(e.message);
+      },
+    });
+  }
+  loadPhotos();
+});

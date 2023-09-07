@@ -1,8 +1,10 @@
 let currentPage = 1;
   let photoGrid = document.querySelector(".photo-grid");
-  let postPage = 'page=1&&per_page=8';
+  let postPage = 'page=1&per_page=12&order=asc';
   let postUrl = `http://motaphoto.local/wp-json/wp/v2/photos?${postPage}`;
-$(window).on("load", function () {
+  let descData = [];
+  let result = "";
+$(window).ready(()=> {
   AOS.init({
     initClassName: "aos-init",
     startEvent: "DOMContentLoaded",
@@ -16,10 +18,10 @@ $(window).on("load", function () {
       method: "GET",
       dataType: "json",
       success: function (data) {
-        if (currentPage === 1) {         
-          createHTML(filters, data);
-        }
-
+        // descData = data;
+         data.forEach((element)=>{                 
+          createHTML(filters, element);        
+        })
       },
       error: function (xhr, status, error) {
         console.error("Error fetching data:", error);
@@ -39,14 +41,15 @@ $(window).on("load", function () {
       format: '',
       sort: ''
     };
-
+   
     function updateFiltersAndLoad() {
       filters.category = categoryFilter.value;
       filters.format = formatFilter.value;
       filters.sort = dateFilter.value;
       if(filters != ''){
-        photoGrid.innerHTML = ""; 
-        sendRequest(filters)
+       photoGrid.innerHTML = ""; 
+       console.log(filters)
+        sendRequest(filters);
         }
     
       }
@@ -54,74 +57,103 @@ $(window).on("load", function () {
     categoryFilter.addEventListener('change', updateFiltersAndLoad);
     formatFilter.addEventListener('change', updateFiltersAndLoad);
     dateFilter.addEventListener('change', updateFiltersAndLoad);
-    if(filters != ''){
-      photoGrid.innerHTML = ""; 
-      sendRequest(filters);
-      }
-
-
-  }
-  
- $("#load-more").on("click", (e) => {
-    e.preventDefault();    
-    postPage = 'page=2&&per_page=4';
-    $.ajax({
-      url: `http://motaphoto.local/wp-json/wp/v2/photos?${postPage}`,
-      method: "GET",
-      dataType: "json",
-      success: function (elements) {
-        if (currentPage = currentPage + 1) {
-          photoGrid.insertAdjacentHTML("beforeend", recreateHTML(elements));
-
-        }
-      },
-      error: function (xhr, status, error) {
-        console.error("Error fetching data:", error);
-      },
-    });
-
-     
-
     
-  });
 
-}
+  } }
+  
+ $("#load-more").on("click", (e) => {   
+    e.preventDefault();    
+    postPage = 'page=2&per_page=12';
+     fetch("http://motaphoto.local/wp-json/wp/v2/photos?"+ postPage, {
+        method: 'GET',
+         }).then(function(response) {
+        if (!response.ok) {
+          throw new Error('Network response error.');
+        } 
+        return response.json();
+      }).then(function(data) {
+        data.forEach(function(post) {
+          console.log(post.id);
+         
+          if(post.id !== result.type){
+              photoGrid.insertAdjacentHTML('beforeend', 
+              `<div class="img aos-init aos-animate" data-aos="fade-right" data-offset="300" data-easing="ease-in-sine"><img src=` + post.acf.image +` class="realImg" alt=`+ post.title.rendered +` data-type=`+post.id+`><div class="overlay"><div class="open-fullscreen" rel=`+ post.acf.image +`><img rel=`+ post.acf.image +` class="fullscreen" src="http://motaphoto.local/wp-content/uploads/2023/08/fullscreen.png" alt="Fullscreen"></div><div class="eye"><a href=`+ post.acf.image +`><img src="http://motaphoto.local/wp-content/themes/motaphoto/assets/images/images/picture-eye.svg" alt="Eye"></a></div><div class="links"><p class="ref-val">`+post.acf.reference +`</p>   <p class="titleName">`+post.title.rendered+`</p><p class="categorie">`+post.acf.categorie+`</p></div></div></div>`);
+            
+            }else{
+              console.log(result.type);
+            }
+      });     
+      
+      }).catch(function(error) {
+        console.error('There was a problem with the fetch operation: ', error);
+      });
+    });
+    
+   
+
+
   var imgBox;
   var relImag;
 
-  function createHTML(filters, datas) {
-    console.log(datas);
-    datas.forEach((element) => {
-      if (element.acf) {
-         createImg(element);
+  function createHTML(filters, element) {
+     // console.log(element);
+    // datas.forEach((element) => {
+      
+   if (filters.category === element.acf.categorie ){
+        createImg(element);
+        creteaHTMLoutPut(element);
+        creteaHTMLeye(element);
+        creatLink(element);        
+      }
+      let filtersFormat = filters.format;
+      //let formatlowerCase = filtersFormat.toLowerCase();
+      if(filtersFormat === element.acf.format){
+        createImg(element);
         creteaHTMLoutPut(element);
         creteaHTMLeye(element);
         creatLink(element);
-
       }
-     else{
-      createImg(element);
-      creteaHTMLoutPut(element);
-      creteaHTMLeye(element);
-      creatLink(element);
+       if(filters.sort === 'DESC'){
+        descData.push(element);
+        let newData = descData.reverse();
+         newData.forEach((newEle)=>{
+         if(newData.length >=12){          //c
+          createImg(newEle);
+          creteaHTMLoutPut(newEle);
+          creteaHTMLeye(newEle);
+          creatLink(newEle);
+          }
+        })     
       }
-    });
-    function createImg(element) {
+     
+      if(filters.sort === 'date'){
+         if(element.date){  
+        createImg(element);
+        creteaHTMLoutPut(element);
+        creteaHTMLeye(element);
+        creatLink(element);
+        }                
+        
+      }
+     //});
+    
+    
+     function createImg(element) {
       linkimg = document.createElement("a");
       linkimg.href = element.link;
       imgBox = document.createElement("div");
       imgBox.className = "img";
       var imgView = document.createElement("img");
-      imgView.className = "w3-images";        
-      imgView.src = element.acf.image;
+      imgView.className = "w3-images";
       imgBox.setAttribute('data-Aos',"fade-right") ;
       imgBox.setAttribute('data-offset',"300") ;
       imgBox.setAttribute('data-easing',"ease-in-sine") ; 
+      
+      imgView.src = element.acf.image;
       relImag = element.acf.image;
       if (window.location == "http://motaphoto.local/") {
         imgBox.append(linkimg);
         linkimg.append(imgView);
-
         photoGrid.append(imgBox);
 
       } else {
@@ -173,9 +205,17 @@ $(window).on("load", function () {
 
     }
   }
+ 
+  
+  const datasetRequest = document.querySelectorAll('.realImg');
+  datasetRequest.forEach(reslelem=>{
+    result = reslelem.dataset;
+    console.log(result.type);
+  })
+  
+ 
 
-
-  function recreateHTML(elements) {
+/*  function recreateHTML(elements) {
     elements.forEach((element) => {
         recreateImg(element);
         recreteaHTMLoutPut(element);
@@ -191,9 +231,6 @@ $(window).on("load", function () {
       var imgView = document.createElement("img");
       imgView.className = "w3-images";
       imgView.src = element.acf.image;
-      imgBox.setAttribute('data-Aos',"fade-right") ;
-      imgBox.setAttribute('data-offset',"300") ;
-      imgBox.setAttribute('data-easing',"ease-in-sine") ;
       relImag = element.acf.image;
       if (window.location == "http://motaphoto.local/") {
         imgBox.append(linkimg);
@@ -251,4 +288,13 @@ $(window).on("load", function () {
     }
   }
    
-});
+  
+  
+  $('select[id$=-status][id^=id_item-]').change(function (){
+    var color = $(this).find('option:selected').val();
+
+    $(this).removeClass('o1 o2 o3').addClass('o' + $(this).find('option:selected').val());
+}).change();*/
+  
+})
+

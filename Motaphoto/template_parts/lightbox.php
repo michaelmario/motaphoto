@@ -4,4 +4,9 @@
     <div class="lightbox-image-box">
         <img class="image-lightbox" src="" alt="images">
     </div>
+    <div class="photoInfo">
+        <div class="reference"></div>
+        <div class="lightBoxCategorie"></div>
+    </div>
 </div>
+

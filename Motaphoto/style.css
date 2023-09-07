@@ -74,7 +74,7 @@ table {
 	justify-content: center;
 	align-items: center;
 	z-index: 999;
-	top:80px;
+	top:32px;
 	left: 0;
   }
   .popup.active {
@@ -86,9 +86,7 @@ table {
 	position: relative;
 	padding:20px;
   }
-  .wpcf7 {
-	padding-left:112px;
-	 }
+  
   #close {
 	position: absolute;
 	top: 0px;

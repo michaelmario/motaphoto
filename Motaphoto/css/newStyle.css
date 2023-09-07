@@ -1,10 +1,3 @@
-/********************************carousel*****************************/
-.imgSlide{
-  width:100%;
-  height:650px;
-  object-fit:cover;
-  overflow: hidden;
-}
 
 
 /****************************************lightbox***********************/
@@ -123,7 +116,7 @@
   }
     .imgSlide{
         width:100%;
-        height:30vh;
+        height:30vh !important;
         object-fit:cover;
         overflow: hidden;
       }
@@ -160,7 +153,7 @@
     .burger-menu-open.active {
       display: block;
       position: absolute;   
-      top:26px;
+      top:66px;
       left:88%;
     }
     .burger-menu-close.active {
